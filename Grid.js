@@ -16,23 +16,21 @@ const generateGridTemplateColumnsOrRows = props => {
 
 const generateStyle = props => `
   display: grid;
-  align-items: ${props.alignItems};
-  justify-items: ${props.justifyItems};
-  grid-gap: ${props.gridGap};
-  grid-template-columns: ${props =>
-    generateGridTemplateColumnsOrRows({
-      num: props.numColumns,
-      width: props.columnWidth,
-      fixed: props.fixedColumns,
-    })};
-  grid-template-rows: ${props =>
-    generateGridTemplateColumnsOrRows({
-      num: props.numRows,
-      width: props.rowHeight,
-      fixed: props.fixedRows,
-    })};
-  grid-auto-columns: ${props.columnWidth};
-  grid-auto-rows: ${props.rowHeight};
+  align-items: ${props.alignItems || ''};
+  justify-items: ${props.justifyItems || ''};
+  grid-gap: ${props.gridGap || ''};
+  grid-auto-columns: ${props.columnWidth || ''};
+  grid-auto-rows: ${props.rowHeight || ''};
+  grid-template-columns: ${generateGridTemplateColumnsOrRows({
+    num: props.numColumns,
+    dimension: props.columnWidth,
+    fixed: props.fixedColumns,
+  }) || ''};
+  grid-template-rows: ${generateGridTemplateColumnsOrRows({
+    num: props.numRows,
+    dimension: props.rowHeight,
+    fixed: props.fixedRows,
+  }) || ''};
 `;
 
 const GridWrapper = styled.div`

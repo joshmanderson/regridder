@@ -7,7 +7,7 @@ const GridItem = styled.div`
 `;
 
 const generateStyle = props => `
-  grid-area: ${props.gridArea};
+  grid-area: ${props.gridArea || ''};
 `;
 
 export default GridItem;
