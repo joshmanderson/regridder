@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { generateDefaultStyle, generateMediaQueries } from './utils';
 
@@ -34,9 +35,25 @@ const generateStyle = props => `
   grid-auto-rows: ${props.rowHeight};
 `;
 
-const Grid = styled.div`
+const GridWrapper = styled.div`
   ${props => generateDefaultStyle(props, generateStyle)};
   ${props => generateMediaQueries(props, generateStyle)};
 `;
+
+const childrenWithBreakpoints = props => {
+  const { children, breakpoints } = props;
+
+  return React.Children.map(children, child =>
+    React.cloneElement(child, {
+      breakpoints,
+    })
+  );
+};
+
+const Grid = props =>
+  React.createElement(
+    GridWrapper,
+    Object.assign({}, props, { children: childrenWithBreakpoints(props) })
+  );
 
 export default Grid;
