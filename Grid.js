@@ -1,5 +1,7 @@
 import React from 'react';
+import { oneOfType, arrayOf, string, number } from 'prop-types';
 import styled from 'styled-components';
+
 import { generateDefaultStyle, generateMediaQueries } from './utils';
 
 const generateGridTemplateColumnsOrRows = props => {
@@ -19,17 +21,17 @@ const generateStyle = props => `
   align-items: ${props.alignItems || ''};
   justify-items: ${props.justifyItems || ''};
   grid-gap: ${props.gridGap || ''};
-  grid-auto-columns: ${props.columnWidth || ''};
   grid-auto-rows: ${props.rowHeight || ''};
-  grid-template-columns: ${generateGridTemplateColumnsOrRows({
-    num: props.numColumns,
-    dimension: props.columnWidth,
-    fixed: props.fixedColumns,
-  }) || ''};
   grid-template-rows: ${generateGridTemplateColumnsOrRows({
     num: props.numRows,
     dimension: props.rowHeight,
     fixed: props.fixedRows,
+  }) || ''};
+  grid-auto-columns: ${props.columnWidth || ''};
+  grid-template-columns: ${generateGridTemplateColumnsOrRows({
+    num: props.numColumns,
+    dimension: props.columnWidth,
+    fixed: props.fixedColumns,
   }) || ''};
 `;
 
@@ -53,5 +55,18 @@ const Grid = props =>
     GridWrapper,
     Object.assign({}, props, { children: childrenWithBreakpoints(props) })
   );
+
+Grid.propTypes = {
+  breakpoints: arrayOf(number),
+  numColumns: oneOfType([number, arrayOf(number)]),
+  numRows: oneOfType([number, arrayOf(number)]),
+  fixedRows: oneOfType([string, arrayOf(string)]),
+  fixedColumns: oneOfType([string, arrayOf(string)]),
+  alignItems: oneOfType([string, arrayOf(string)]),
+  justifyItems: oneOfType([string, arrayOf(string)]),
+  gridGap: oneOfType([string, arrayOf(string)]),
+  rowHeight: oneOfType([string, arrayOf(string)]),
+  columnWidth: oneOfType([string, arrayOf(string)]),
+};
 
 export default Grid;
