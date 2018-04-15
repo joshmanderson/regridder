@@ -6,10 +6,14 @@ import { generateDefaultStyle, generateMediaQueries } from './utils';
 const generateStyle = props => `
   grid-area: ${props.gridArea || ''};
   grid-row-start: ${props.rowStart || ''};
-  grid-row-end: ${props.rowEnd ? props.rowEnd : `span ${props.rowSpan || ''}`};
+  grid-row-end: ${
+    props.rowEnd ? props.rowEnd : props.rowSpan ? `span ${props.rowSpan}` : ''
+  };
   grid-column-start: ${props.columnStart || ''};
   grid-column-end: ${
-    props.columnEnd ? props.columnEnd : `span ${props.columnSpan || ''}`
+    props.columnEnd
+      ? props.columnEnd
+      : props.columnSpan ? `span ${props.columnSpan}` : ''
   };
 `;
 

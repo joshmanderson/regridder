@@ -16,7 +16,7 @@ const generateMediaQuery = (
   breakpointIndex,
   props,
   generateStyle
-) => `@media only screen and (min-width: ${breakpoint}px) {
+) => `@media only screen and (min-width: ${breakpoint}) {
       ${generateStyle(getPropsAtBreakpoint(breakpointIndex, props))}
     }`;
 

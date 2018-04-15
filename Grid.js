@@ -57,7 +57,7 @@ const Grid = props =>
   );
 
 Grid.propTypes = {
-  breakpoints: arrayOf(number),
+  breakpoints: arrayOf(string),
   numColumns: oneOfType([number, arrayOf(number)]),
   numRows: oneOfType([number, arrayOf(number)]),
   fixedRows: oneOfType([string, arrayOf(string)]),
