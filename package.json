@@ -1,8 +1,17 @@
 {
   "name": "regridder",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "Simple React js grid layout system",
-  "keywords": ["react", "grid", "layout", "system", "styled", "css", "media"],
+  "keywords": [
+    "react",
+    "grid",
+    "layout",
+    "system",
+    "responsive",
+    "styled",
+    "css",
+    "media"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

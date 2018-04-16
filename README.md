@@ -29,6 +29,7 @@ Note that all `Grid` props are optional.
 * Array of strings
 * Defines responsive breakpoint width values
 * E.g. `['500px', '700px']`
+* Default value: `['40em', '52em', '64em']`
 
 `alignItems`
 
@@ -170,7 +171,7 @@ Note that by default, a grid item will span one column and one row.
 
 ## ResponsiveLayout.js
 
-Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing an array of breakpoints to the Grid component, and appropriate arrays for relevant props in the Grid and/or GridItem components. In the following example, we specify that our breakpoints are 500px and 700px, and then we specify that the number of columns, the row height and the width/height of various grid items should vary respective to our breakpoints.
+Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`).
 
 ```js
 import { Grid, GridItem } from 'regridder';
@@ -180,16 +181,9 @@ const MyGridItem = props => (
   <GridItem style={{ border: '1px solid black' }} {...props} />
 );
 
-const breakpoints = ['500px', '700px'];
-
 const ResponsiveLayout = () => (
   <div style={{ textAlign: 'center' }}>
-    <Grid
-      numColumns={[2, 3]}
-      rowHeight={['2em', '3em']}
-      gridGap="1em"
-      breakpoints={breakpoints}
-    >
+    <Grid numColumns={[2, 3]} rowHeight={['2em', '3em']} gridGap="1em">
       <MyGridItem columnSpan={2}>Item 1</MyGridItem>
       <MyGridItem rowSpan={[2, 1]}>Item 2</MyGridItem>
       <MyGridItem rowSpan={2}>Item 3</MyGridItem>
@@ -205,4 +199,4 @@ const ResponsiveLayout = () => (
 export default ResponsiveLayout;
 ```
 
-Note that your breakpoints can use whichever unit of measurement you'd prefer, and any screen width less than your smallest breakpoint will use the same prop values as your smallest breakpoint does. Also note that if you provide a single value for a prop, that value will be used at all breakpoints.
+Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer. Any screen width less than the smallest breakpoint will use the same prop values as the smallest breakpoint does. Also note that if you provide a single value for a prop, that value will be used at all breakpoints.

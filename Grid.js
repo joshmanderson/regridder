@@ -69,4 +69,8 @@ Grid.propTypes = {
   fixedColumns: oneOfType([string, arrayOf(string)]),
 };
 
+Grid.defaultProps = {
+  breakpoints: ['40em', '52em', '64em'],
+};
+
 export default Grid;
