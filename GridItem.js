@@ -13,7 +13,9 @@ const generateStyle = props => `
   grid-column-end: ${
     props.columnEnd
       ? props.columnEnd
-      : props.columnSpan ? `span ${props.columnSpan}` : ''
+      : props.columnSpan
+        ? `span ${props.columnSpan}`
+        : ''
   };
 `;
 
@@ -23,13 +25,13 @@ const GridItem = styled.div`
 `;
 
 GridItem.propTypes = {
-  gridArea: oneOfType([string, arrayOf(string)]),
   rowStart: oneOfType([number, arrayOf(number)]),
   rowEnd: oneOfType([number, arrayOf(number)]),
   rowSpan: oneOfType([number, arrayOf(number)]),
   columnStart: oneOfType([number, arrayOf(number)]),
   columnEnd: oneOfType([number, arrayOf(number)]),
   columnSpan: oneOfType([number, arrayOf(number)]),
+  gridArea: oneOfType([string, arrayOf(string)]),
 };
 
 export default GridItem;

@@ -58,15 +58,15 @@ const Grid = props =>
 
 Grid.propTypes = {
   breakpoints: arrayOf(string),
-  numColumns: oneOfType([number, arrayOf(number)]),
-  numRows: oneOfType([number, arrayOf(number)]),
-  fixedRows: oneOfType([string, arrayOf(string)]),
-  fixedColumns: oneOfType([string, arrayOf(string)]),
   alignItems: oneOfType([string, arrayOf(string)]),
   justifyItems: oneOfType([string, arrayOf(string)]),
   gridGap: oneOfType([string, arrayOf(string)]),
+  numRows: oneOfType([number, arrayOf(number)]),
   rowHeight: oneOfType([string, arrayOf(string)]),
+  fixedRows: oneOfType([string, arrayOf(string)]),
+  numColumns: oneOfType([number, arrayOf(number)]),
   columnWidth: oneOfType([string, arrayOf(string)]),
+  fixedColumns: oneOfType([string, arrayOf(string)]),
 };
 
 export default Grid;
