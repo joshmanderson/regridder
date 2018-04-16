@@ -1,4 +1,4 @@
-import { oneOfType, arrayOf, string, number } from 'prop-types';
+import { oneOfType, arrayOf, string, number, bool } from 'prop-types';
 import styled from 'styled-components';
 
 import { generateDefaultStyle, generateMediaQueries } from './utils';
@@ -25,6 +25,7 @@ const GridItem = styled.div`
 `;
 
 GridItem.propTypes = {
+  useGridBreakpoints: bool,
   rowStart: oneOfType([number, arrayOf(number)]),
   rowEnd: oneOfType([number, arrayOf(number)]),
   rowSpan: oneOfType([number, arrayOf(number)]),
@@ -32,6 +33,10 @@ GridItem.propTypes = {
   columnEnd: oneOfType([number, arrayOf(number)]),
   columnSpan: oneOfType([number, arrayOf(number)]),
   gridArea: oneOfType([string, arrayOf(string)]),
+};
+
+GridItem.defaultProps = {
+  useGridBreakpoints: true,
 };
 
 export default GridItem;

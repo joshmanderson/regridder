@@ -43,10 +43,14 @@ const GridWrapper = styled.div`
 const childrenWithBreakpoints = props => {
   const { children, breakpoints } = props;
 
-  return React.Children.map(children, child =>
-    React.cloneElement(child, {
-      breakpoints,
-    })
+  return React.Children.map(
+    children,
+    child =>
+      child.props.useGridBreakpoints
+        ? React.cloneElement(child, {
+            breakpoints,
+          })
+        : child
   );
 };
 
