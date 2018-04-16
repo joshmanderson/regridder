@@ -1,6 +1,6 @@
 # regridder
 
-Simple React js grid layout system.
+Simple React js responsive grid layout system.
 
 # Overview
 
