@@ -18,7 +18,7 @@ Refer to the docs for your version of npm or yarn if you encounter issues instal
 
 # API Reference
 
-Be sure to check out the [CSS Grid Layout Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) for various prop syntaxes – in general, camelCased component props should map to a dash-cased css property within that documentation (though not all component props have a css property equivalent). Also note that for all props, you may provide a single value, or an array of values – if you provide an array of values, each value will be used at appropriate responsive breakpoints.
+Be sure to check out the [CSS Grid Layout Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) for various prop syntaxes – in general, camelCased component props should map to a dash-cased css property within that documentation (though not all component props have a css property equivalent).
 
 ### `Grid` props
 
@@ -135,11 +135,15 @@ Note that all `GridItem` props are optional.
 * Defines precisely where the item should be placed in the grid
 * E.g. `'1 / 1 / 2 / 3'` – this translates to: `rowStart: 1`, `columnStart: 1`, `rowEnd: 2`, `columnEnd: 3`
 
+# Responsiveness
+
+For all `Grid` and `GridItem` props, you may provide a single value (as documented above), or an array of values – if you provide an array of values, each value will be used at appropriate responsive breakpoints. For example, if you provide `[1, 2, 3]` as the value for a prop, `1` will be used below the smallest breakpoint, `2` will be used from the next breakpoint and up, `3` will be used from the next breakpoint and up etc. Also note that if you provide a single value for a prop, that value will be used at all breakpoints.
+
 # Examples
 
 ## SimpleLayout.js
 
-Starting off simple, we'll define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others.
+Starting off simple, we'll define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others. Note that by default, a grid item will span one column and one row.
 
 ```js
 import { Grid, GridItem } from 'regridder';
@@ -167,11 +171,9 @@ const SimpleLayout = () => (
 export default SimpleLayout;
 ```
 
-Note that by default, a grid item will span one column and one row.
-
 ## ResponsiveLayout.js
 
-Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`).
+Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`). Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer.
 
 ```js
 import { Grid, GridItem } from 'regridder';
@@ -198,5 +200,3 @@ const ResponsiveLayout = () => (
 
 export default ResponsiveLayout;
 ```
-
-Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer. Any screen width less than the smallest breakpoint will use the same prop values as the smallest breakpoint does. Also note that if you provide a single value for a prop, that value will be used at all breakpoints.
