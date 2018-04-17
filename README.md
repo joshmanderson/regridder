@@ -8,6 +8,7 @@ Simple React js responsive grid layout system.
 * [Installation](#installation)
 * [API Reference](#api-reference)
 * [Examples](#examples)
+* [Further Notes](#further-notes)
 
 ## Overview
 
@@ -151,26 +152,29 @@ For all `Grid` and `GridItem` props, you may provide a single value (as document
 Starting off simple, we'll define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others. Note that by default, a grid item will span one column and one row.
 
 ```js
-import { Grid, GridItem } from 'regridder';
+import { Grid, GridItem as BaseGridItem } from 'regridder';
 
-// This is just to add a border for visibility of grid items
-const MyGridItem = props => (
-  <GridItem style={{ border: '1px solid black' }} {...props} />
+// This is just to add a border for better visibility of grid items
+const GridItem = props => (
+  <BaseGridItem style={{ border: '1px solid black' }} {...props} />
 );
 
 const SimpleLayout = () => (
-  <div style={{ textAlign: 'center' }}>
-    <Grid numColumns={3} rowHeight="2em" gridGap="1em">
-      <MyGridItem columnSpan={2}>Item 1</MyGridItem>
-      <MyGridItem>Item 2</MyGridItem>
-      <MyGridItem rowSpan={2}>Item 3</MyGridItem>
-      <MyGridItem rowSpan={3} columnSpan={2}>
-        Item 4
-      </MyGridItem>
-      <MyGridItem>Item 5</MyGridItem>
-      <MyGridItem columnSpan={3}>Item 6</MyGridItem>
-    </Grid>
-  </div>
+  <Grid
+    numColumns={3}
+    rowHeight="2em"
+    gridGap="1em"
+    style={{ textAlign: 'center' }} // this is just for nicer viewing of text
+  >
+    <GridItem columnSpan={2}>Item 1</GridItem>
+    <GridItem>Item 2</GridItem>
+    <GridItem rowSpan={2}>Item 3</GridItem>
+    <GridItem rowSpan={3} columnSpan={2}>
+      Item 4
+    </GridItem>
+    <GridItem>Item 5</GridItem>
+    <GridItem columnSpan={3}>Item 6</GridItem>
+  </Grid>
 );
 
 export default SimpleLayout;
@@ -179,27 +183,57 @@ export default SimpleLayout;
 Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`). Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer.
 
 ```js
-import { Grid, GridItem } from 'regridder';
+import { Grid, GridItem as BaseGridItem } from 'regridder';
 
-// This is just to add a border for visibility of grid items
-const MyGridItem = props => (
-  <GridItem style={{ border: '1px solid black' }} {...props} />
+// This is just to add a border for better visibility of grid items
+const GridItem = props => (
+  <BaseGridItem style={{ border: '1px solid black' }} {...props} />
 );
 
 const ResponsiveLayout = () => (
-  <div style={{ textAlign: 'center' }}>
-    <Grid numColumns={[2, 3]} rowHeight={['2em', '3em']} gridGap="1em">
-      <MyGridItem columnSpan={2}>Item 1</MyGridItem>
-      <MyGridItem rowSpan={[2, 1]}>Item 2</MyGridItem>
-      <MyGridItem rowSpan={2}>Item 3</MyGridItem>
-      <MyGridItem rowSpan={3} columnSpan={2}>
-        Item 4
-      </MyGridItem>
-      <MyGridItem columnSpan={[2, 1]}>Item 5</MyGridItem>
-      <MyGridItem columnSpan={[2, 3]}>Item 6</MyGridItem>
-    </Grid>
-  </div>
+  <Grid
+    numColumns={[2, 3]}
+    rowHeight={['2em', '3em']}
+    gridGap="1em"
+    style={{ textAlign: 'center' }} // this is just for nicer viewing of text
+  >
+    <GridItem columnSpan={2}>Item 1</GridItem>
+    <GridItem rowSpan={[2, 1]}>Item 2</GridItem>
+    <GridItem rowSpan={2}>Item 3</GridItem>
+    <GridItem rowSpan={3} columnSpan={2}>
+      Item 4
+    </GridItem>
+    <GridItem columnSpan={[2, 1]}>Item 5</GridItem>
+    <GridItem columnSpan={[2, 3]}>Item 6</GridItem>
+  </Grid>
 );
 
 export default ResponsiveLayout;
+```
+
+## Further Notes
+
+If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
+
+```js
+import { Grid } from 'regridder';
+
+// This is just to add a border for better visibility of grid items
+const itemStyle = { border: '1px solid black' };
+
+const SuperSimpleLayout = () => (
+  <Grid
+    numColumns={[2, 3]}
+    rowHeight={['2em', '3em']}
+    gridGap="1em"
+    style={{ textAlign: 'center' }} // this is just for nicer viewing of text
+  >
+    <div style={itemStyle}>Item 1</div>
+    <span style={itemStyle}>Item 2</span>
+    <div style={itemStyle}>Item 3</div>
+    <span style={itemStyle}>Item 4</span>
+  </Grid>
+);
+
+export default SuperSimpleLayout;
 ```
