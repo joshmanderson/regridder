@@ -40,37 +40,37 @@ const GridWrapper = styled.div`
   ${props => generateMediaQueries(props, generateStyle)};
 `;
 
-const childrenWithBreakpoints = props => {
-  const { children, breakpoints } = props;
+class Grid extends React.Component {
+  static propTypes = {
+    breakpoints: arrayOf(string),
+    alignItems: oneOfType([string, arrayOf(string)]),
+    justifyItems: oneOfType([string, arrayOf(string)]),
+    gridGap: oneOfType([string, arrayOf(string)]),
+    numRows: oneOfType([number, arrayOf(number)]),
+    rowHeight: oneOfType([string, arrayOf(string)]),
+    fixedRows: oneOfType([string, arrayOf(string)]),
+    numColumns: oneOfType([number, arrayOf(number)]),
+    columnWidth: oneOfType([string, arrayOf(string)]),
+    fixedColumns: oneOfType([string, arrayOf(string)]),
+  };
 
-  return React.Children.map(children, child =>
-    React.cloneElement(child, {
-      breakpoints,
-    })
-  );
-};
+  static defaultProps = {
+    breakpoints: ['40em', '52em', '64em'],
+  };
 
-const Grid = props =>
-  React.createElement(
-    GridWrapper,
-    Object.assign({}, props, { children: childrenWithBreakpoints(props) })
-  );
+  static childContextTypes = {
+    breakpoints: arrayOf(string),
+  };
 
-Grid.propTypes = {
-  breakpoints: arrayOf(string),
-  alignItems: oneOfType([string, arrayOf(string)]),
-  justifyItems: oneOfType([string, arrayOf(string)]),
-  gridGap: oneOfType([string, arrayOf(string)]),
-  numRows: oneOfType([number, arrayOf(number)]),
-  rowHeight: oneOfType([string, arrayOf(string)]),
-  fixedRows: oneOfType([string, arrayOf(string)]),
-  numColumns: oneOfType([number, arrayOf(number)]),
-  columnWidth: oneOfType([string, arrayOf(string)]),
-  fixedColumns: oneOfType([string, arrayOf(string)]),
-};
+  getChildContext() {
+    return {
+      breakpoints: this.props.breakpoints,
+    };
+  }
 
-Grid.defaultProps = {
-  breakpoints: ['40em', '52em', '64em'],
-};
+  render() {
+    return <GridWrapper {...this.props} />;
+  }
+}
 
 export default Grid;
