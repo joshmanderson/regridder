@@ -41,6 +41,27 @@ const GridWrapper = styled.div`
 `;
 
 class Grid extends React.Component {
+  static propTypes = {
+    breakpoints: arrayOf(string),
+    alignItems: oneOfType([string, arrayOf(string)]),
+    justifyItems: oneOfType([string, arrayOf(string)]),
+    gridGap: oneOfType([string, arrayOf(string)]),
+    numRows: oneOfType([number, arrayOf(number)]),
+    rowHeight: oneOfType([string, arrayOf(string)]),
+    fixedRows: oneOfType([string, arrayOf(string)]),
+    numColumns: oneOfType([number, arrayOf(number)]),
+    columnWidth: oneOfType([string, arrayOf(string)]),
+    fixedColumns: oneOfType([string, arrayOf(string)])
+  };
+
+  static defaultProps = {
+    breakpoints: ["40em", "52em", "64em"]
+  };
+
+  static childContextTypes = {
+    breakpoints: arrayOf(string)
+  };
+
   getChildContext() {
     return {
       breakpoints: this.props.breakpoints
@@ -51,26 +72,5 @@ class Grid extends React.Component {
     return <GridWrapper {...this.props} />;
   }
 }
-
-Grid.propTypes = {
-  breakpoints: arrayOf(string),
-  alignItems: oneOfType([string, arrayOf(string)]),
-  justifyItems: oneOfType([string, arrayOf(string)]),
-  gridGap: oneOfType([string, arrayOf(string)]),
-  numRows: oneOfType([number, arrayOf(number)]),
-  rowHeight: oneOfType([string, arrayOf(string)]),
-  fixedRows: oneOfType([string, arrayOf(string)]),
-  numColumns: oneOfType([number, arrayOf(number)]),
-  columnWidth: oneOfType([string, arrayOf(string)]),
-  fixedColumns: oneOfType([string, arrayOf(string)])
-};
-
-Grid.defaultProps = {
-  breakpoints: ["40em", "52em", "64em"]
-};
-
-Grid.childContextTypes = {
-  breakpoints: arrayOf(string)
-};
 
 export default Grid;

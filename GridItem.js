@@ -26,25 +26,25 @@ const GridItemWrapper = styled.div`
 `;
 
 class GridItem extends React.Component {
+  static propTypes = {
+    rowStart: oneOfType([number, arrayOf(number)]),
+    rowEnd: oneOfType([number, arrayOf(number)]),
+    rowSpan: oneOfType([number, arrayOf(number)]),
+    columnStart: oneOfType([number, arrayOf(number)]),
+    columnEnd: oneOfType([number, arrayOf(number)]),
+    columnSpan: oneOfType([number, arrayOf(number)]),
+    gridArea: oneOfType([string, arrayOf(string)])
+  };
+
+  static contextTypes = {
+    breakpoints: arrayOf(string)
+  };
+
   render() {
     return (
       <GridItemWrapper breakpoints={this.context.breakpoints} {...this.props} />
     );
   }
 }
-
-GridItem.propTypes = {
-  rowStart: oneOfType([number, arrayOf(number)]),
-  rowEnd: oneOfType([number, arrayOf(number)]),
-  rowSpan: oneOfType([number, arrayOf(number)]),
-  columnStart: oneOfType([number, arrayOf(number)]),
-  columnEnd: oneOfType([number, arrayOf(number)]),
-  columnSpan: oneOfType([number, arrayOf(number)]),
-  gridArea: oneOfType([string, arrayOf(string)])
-};
-
-GridItem.contextTypes = {
-  breakpoints: arrayOf(string)
-};
 
 export default GridItem;

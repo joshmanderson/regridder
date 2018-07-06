@@ -1,6 +1,6 @@
 {
   "name": "regridder",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Simple React js responsive grid layout system",
   "keywords": [
     "react",
@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/joshmanderson/regridder/issues"
   },
-  "homepage": "https://github.com/joshmanderson/regridder#readme",
+  "homepage": "https://github.com/joshmanderson/regridder",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
