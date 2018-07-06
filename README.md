@@ -149,9 +149,45 @@ For all `Grid` and `GridItem` props, you may provide a single value (as document
 
 ## Examples
 
-### Simple Layout
+### Uniform Grid
 
-Starting off fairly simple, we'll define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others. Note that by default, a grid item will span one column and one row.
+If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
+
+Mobile View:
+
+![SuperSimpleLayoutMobile](assets/SuperSimpleLayoutMobile.png)
+
+Desktop View:
+
+![SuperSimpleLayoutDesktop](assets/SuperSimpleLayoutDesktop.png)
+
+```js
+import React from "react";
+import { Grid } from "regridder";
+
+// This is just to add a border for better visibility of grid items
+const itemStyle = { border: "1px solid black" };
+
+const MyUniformLayout = () => (
+  <Grid
+    numColumns={[2, 3]}
+    rowHeight={["2em", "3em"]}
+    gridGap="1em"
+    style={{ textAlign: "center" }} // this is just for nicer viewing of text
+  >
+    <div style={itemStyle}>Item 1</div>
+    <span style={itemStyle}>Item 2</span>
+    <div style={itemStyle}>Item 3</div>
+    <span style={itemStyle}>Item 4</span>
+  </Grid>
+);
+
+export default MyUniformLayout;
+```
+
+### Spanning Grid Items Across Rows And Columns
+
+Here we define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others. Note that by default, a grid item will span one column and one row.
 
 ![SimpleLayout](assets/SimpleLayout.png)
 
@@ -164,7 +200,7 @@ const GridItem = props => (
   <BaseGridItem style={{ border: "1px solid black" }} {...props} />
 );
 
-const SimpleLayout = () => (
+const MySimpleLayout = () => (
   <Grid
     numColumns={3}
     rowHeight="2em"
@@ -182,10 +218,10 @@ const SimpleLayout = () => (
   </Grid>
 );
 
-export default SimpleLayout;
+export default MySimpleLayout;
 ```
 
-### Responsive Layout
+### Responsive Grid
 
 Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`). Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer.
 
@@ -206,7 +242,7 @@ const GridItem = props => (
   <BaseGridItem style={{ border: "1px solid black" }} {...props} />
 );
 
-const ResponsiveLayout = () => (
+const MyResponsiveLayout = () => (
   <Grid
     numColumns={[2, 3]}
     rowHeight={["2em", "3em"]}
@@ -224,41 +260,5 @@ const ResponsiveLayout = () => (
   </Grid>
 );
 
-export default ResponsiveLayout;
-```
-
-### Super Simple Layout
-
-If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
-
-Mobile View:
-
-![SuperSimpleLayoutMobile](assets/SuperSimpleLayoutMobile.png)
-
-Desktop View:
-
-![SuperSimpleLayoutDesktop](assets/SuperSimpleLayoutDesktop.png)
-
-```js
-import React from "react";
-import { Grid } from "regridder";
-
-// This is just to add a border for better visibility of grid items
-const itemStyle = { border: "1px solid black" };
-
-const SuperSimpleLayout = () => (
-  <Grid
-    numColumns={[2, 3]}
-    rowHeight={["2em", "3em"]}
-    gridGap="1em"
-    style={{ textAlign: "center" }} // this is just for nicer viewing of text
-  >
-    <div style={itemStyle}>Item 1</div>
-    <span style={itemStyle}>Item 2</span>
-    <div style={itemStyle}>Item 3</div>
-    <span style={itemStyle}>Item 4</span>
-  </Grid>
-);
-
-export default SuperSimpleLayout;
+export default MyResponsiveLayout;
 ```
