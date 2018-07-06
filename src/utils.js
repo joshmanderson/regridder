@@ -26,8 +26,8 @@ const generateMediaQueries = (props, generateStyle) =>
         .map((breakpoint, index) =>
           generateMediaQuery(breakpoint, index + 1, props, generateStyle)
         )
-        .join(' ')
-    : '';
+        .join(" ")
+    : "";
 
 const generateDefaultStyle = (props, generateStyle) =>
   generateStyle(getPropsAtIndex(0, props));
