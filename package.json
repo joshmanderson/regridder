@@ -1,6 +1,6 @@
 {
   "name": "regridder",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "Simple React js responsive grid layout system",
   "keywords": [
     "react",
