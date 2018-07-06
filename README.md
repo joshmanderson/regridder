@@ -149,7 +149,7 @@ For all `Grid` and `GridItem` props, you may provide a single value (as document
 
 ## Examples
 
-### SimpleLayout
+### Simple Layout
 
 Starting off fairly simple, we'll define a grid with 3 columns and add 6 items to the grid, specifying how many rows and columns some of the items should span, while keeping defaults for others. Note that by default, a grid item will span one column and one row.
 
@@ -184,6 +184,8 @@ const SimpleLayout = () => (
 
 export default SimpleLayout;
 ```
+
+### Responsive Layout
 
 Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`). Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer.
 
@@ -226,6 +228,8 @@ export default ResponsiveLayout;
 ```
 
 ## Further Notes
+
+### Super Simple Layout
 
 If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
 
