@@ -227,8 +227,6 @@ const ResponsiveLayout = () => (
 export default ResponsiveLayout;
 ```
 
-## Further Notes
-
 ### Super Simple Layout
 
 If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
