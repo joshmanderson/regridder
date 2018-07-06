@@ -187,7 +187,12 @@ export default SimpleLayout;
 
 Creating a layout that is responsive to the screen width of a user's device can be achieved by simply providing arrays of values for relevant props in the Grid and/or GridItem components. In the following example, we specify that the number of columns, the row height and the width/height of various grid items should vary respective to the default breakpoints (`['40em', '52em', '64em']`). Note that you can also provide your own breakpoints to the `Grid` component, and you can use whichever unit of measurement you'd prefer.
 
+Mobile View:
+
 ![ResponsiveLayoutMobile](assets/ResponsiveLayoutMobile.png)
+
+Desktop View:
+
 ![ResponsiveLayoutDesktop](assets/ResponsiveLayoutDesktop.png)
 
 ```js
@@ -224,7 +229,12 @@ export default ResponsiveLayout;
 
 If you're only interested in defining a simple, uniform layout and don't need to position and manipulate individual items within your grid, then you don't need to use the `GridItem` component at all, and can pass your own custom components as children to the `Grid`. For example:
 
+Mobile View:
+
 ![SuperSimpleLayoutMobile](assets/SuperSimpleLayoutMobile.png)
+
+Desktop View:
+
 ![SuperSimpleLayoutDesktop](assets/SuperSimpleLayoutDesktop.png)
 
 ```js
