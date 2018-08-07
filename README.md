@@ -5,6 +5,7 @@ Simple React js responsive grid layout system.
 ## Contents
 
 - [Overview](#overview)
+- [Compatibility](#compatibility)
 - [Installation](#installation)
 - [API Reference](#api-reference)
 - [Examples](#examples)
@@ -13,6 +14,12 @@ Simple React js responsive grid layout system.
 ## Overview
 
 Regridder allows developers to easily (and [simply](https://www.infoq.com/presentations/Simple-Made-Easy)) create flexible and responsive grid layouts within their React js applications. Regridder makes use of the excellent [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) feature, and uses the same syntaxes for prop values. Regridder also uses [styled-components](https://github.com/styled-components/styled-components) to apply media queries for responsiveness.
+
+## Compatibility
+
+All major browsers, except for Internet Explorer.
+
+https://caniuse.com/#feat=css-grid
 
 ## Installation
 
