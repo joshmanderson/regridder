@@ -13,7 +13,9 @@ Simple React js responsive grid layout system.
 
 ## Overview
 
-Regridder allows developers to easily (and [simply](https://www.infoq.com/presentations/Simple-Made-Easy)) create flexible and responsive grid layouts within their React js applications. Regridder makes use of the excellent [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) feature, and uses the same syntaxes for prop values. Regridder also uses [styled-components](https://github.com/styled-components/styled-components) to apply media queries for responsiveness.
+Regridder allows developers to easily (and [simply](https://www.infoq.com/presentations/Simple-Made-Easy)) create flexible and responsive grid layouts within their React js applications. Regridder makes use of the excellent [CSS Grid Layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout) feature, and uses the same syntaxes for prop values.
+
+Regridder uses the incredible [styled-components](https://github.com/styled-components/styled-components) package to apply the styles required for the grid and grid items, including applying media queries for responsiveness. If you aren't using it yet, give it a look to see if it could help improve your styling experience.
 
 ## Compatibility
 
@@ -23,11 +25,25 @@ https://caniuse.com/#feat=css-grid
 
 ## Installation
 
+#### npm
+
 `npm i regridder`
 
-or
+#### yarn
 
 `yarn add regridder`
+
+### Install dependencies
+
+Don't forget to install `styled-components` as well if you're not already using it. The installation of this package is separated so that we can reduce the size of `regridder` significantly if you happen to be using `styled-components` already.
+
+#### npm
+
+`npm i styled-components`
+
+#### yarn
+
+`yarn add styled-components`
 
 Refer to the docs for your version of npm or yarn if you encounter issues installing this package.
 
